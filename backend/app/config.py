@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     access_token_expire_minutes: int
     
     api_key: str
-    api_base_url: str
+    opendb_base_url: str
     class Config:
         env_file = '.env'
 

@@ -14,7 +14,7 @@ router = APIRouter(
 
 
 YOUR_KEY = settings.api_key
-BASE_URL = settings.api_base_url
+BASE_URL = settings.opendb_base_url
 
 @router.get('/id/{imdb_id}')
 async def single_movie(imdb_id: str, current_user: int = Depends(oauth2.get_current_user)):
