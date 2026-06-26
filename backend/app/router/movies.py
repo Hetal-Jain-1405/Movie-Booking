@@ -29,6 +29,7 @@ async def all_movies(db: Session = Depends(database.get_db), current_user: int =
 
     imdb_ids = [r[0] for r in db.query(func.distinct(models.Show.imdb_id)).all()]
     # .all() returns a list of tuples, even for a single selected column. So, we use the 0th index to extract the imdb_id as a string.
+    
     all_movies = []
     async with httpx.AsyncClient() as movies:
         for imdb_id in imdb_ids:
