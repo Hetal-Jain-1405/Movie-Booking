@@ -21,7 +21,7 @@ def new_user(user: schemas.User, db: Session = Depends(database.get_db)):
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-
+    
     return new_user
 
 @router.post('/login', response_model = schemas.Token)
