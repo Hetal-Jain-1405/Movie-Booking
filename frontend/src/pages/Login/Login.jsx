@@ -2,8 +2,11 @@ import { FaEnvelope, FaEye, FaTicketAlt } from "react-icons/fa";
 import cinema from '../../assets/cinema.png';
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
+
 
 const Login = () => {
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,6 +25,8 @@ const Login = () => {
       localStorage.setItem('acess_token', response.data.access_token);
 
       alert('Login successful!'); 
+
+      navigate('/home'); // Redirect to the home page after successful login
     }
     catch (error) {
       console.error('Error during login:', error);
