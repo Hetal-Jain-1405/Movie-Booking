@@ -22,7 +22,7 @@ const Login = () => {
       const response = await axios.post('http://127.0.0.1:8000/users/login/', formData)
       console.log('Login successful:', response.data);
 
-      localStorage.setItem('acess_token', response.data.access_token);
+      localStorage.setItem('access_token', response.data.access_token);
 
       alert('Login successful!'); 
 

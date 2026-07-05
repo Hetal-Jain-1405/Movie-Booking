@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 
-from .router import user, movies, booking, payment
+from .router import user, movies, booking, payment, shows
 
 from . import models
 from .database import engine
@@ -29,3 +29,4 @@ app.include_router(user.router)
 app.include_router(movies.router)
 app.include_router(booking.router)
 app.include_router(payment.router)
+app.include_router(shows.router)

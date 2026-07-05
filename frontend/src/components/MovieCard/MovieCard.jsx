@@ -1,8 +1,11 @@
-
+import { useNavigate } from "react-router";
 
 export default function MovieCard({ movie }) {
+    const navigate = useNavigate();
+
     return (
-      <div className="bg-white rounded-2xl overflow-hidden shadow hover:scale-105 transition">
+      <div className="bg-white rounded-2xl overflow-hidden shadow hover:scale-105 transition"
+            onClick = {() => navigate(`/movie/${movie.imdbID}`)}>
   
         <img
           src={movie.Poster}

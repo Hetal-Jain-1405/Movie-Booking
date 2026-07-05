@@ -12,7 +12,7 @@ export default function Home() {
 
     useEffect(() => {
         const fetchMovies = async () => {
-           const token = localStorage.getItem('acess_token');
+           const token = localStorage.getItem('access_token');
 
             const response = await axios.get('http://127.0.0.1:8000/movies/all', {
                 headers: {
