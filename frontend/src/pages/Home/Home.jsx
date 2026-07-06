@@ -28,7 +28,6 @@ export default function Home() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-5">
-      <Navbar />
       <Hero />
 
       <div className="mt-8 flex justify-between items-center">

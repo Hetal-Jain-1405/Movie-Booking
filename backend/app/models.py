@@ -31,7 +31,7 @@ class Payment(Base):
     id = Column(Integer, primary_key = True, nullable = False)
     payment_mode = Column(String, nullable = False)
     amount = Column(Integer, nullable = False)
-    is_success = Column(Boolean, nullable = False)
+    is_success = Column(Boolean, nullable = False, default=False)
 
     bookings = relationship('Booking', back_populates='payment')
 

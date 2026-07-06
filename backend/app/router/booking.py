@@ -33,3 +33,12 @@ def all_bookings(current_user: int = Depends(oauth2.get_current_user), db: Sessi
                     )
     
     return user_bookings
+
+@router.get('/{booking_id}')
+def get_booking(booking_id: int, db:Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user)):
+    
+    booking = ( db.query(models.Booking)
+                  .filter(models.Booking.id == booking_id)
+                  .first())
+    
+    return booking

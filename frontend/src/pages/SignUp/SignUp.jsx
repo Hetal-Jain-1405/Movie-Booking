@@ -2,16 +2,19 @@ import { FaEnvelope, FaEye, FaTicketAlt, FaUser } from "react-icons/fa";
 import cinema from '../../assets/cinema.png';
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const SignUp = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const navigate = useNavigate(); // navigate function to redirect after successful login
 
+
+  console.log(8+2)
   const handleLogin = async (e) => {
-    const navigate = useNavigate(); // navigate function to redirect after successful login
+    console.log(name)
     e.preventDefault(); //won't refresh the react page after form submission
 
     try {

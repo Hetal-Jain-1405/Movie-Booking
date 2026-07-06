@@ -42,3 +42,13 @@ def login(user_credentials: OAuth2PasswordRequestForm = Depends(), db: Session =
     access_token = oauth2.create_access_token(data= {'user_id': user.id})
 
     return {'access_token': access_token, 'token_type': 'bearer'}
+
+@router.get('/profile', response_model=schemas.UserResponse)
+def user_profile(db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user)):
+    
+    profile = ( db.query(models.User)
+                  .filter(models.User.id == current_user.id)
+                  .first()
+                )
+    
+    return profile

@@ -1,7 +1,35 @@
+import axios from "axios"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router";
 
 
-export default function OrderBox({ticketCount, price}) {
+export default function OrderBox({ticketCount, price, showID,imdbID}) {
+
+  const navigate = useNavigate()
+
+    const postBooking = async() => {
+      try{
+        const token = localStorage.getItem('access_token')
+        const response = await axios.post(`http://127.0.0.1:8000/booking/new`, {
+
+            show_id: showID,
+            count_of_tickets: ticketCount
+            
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            }
+          }
+        );
+        console.log(response.data);
+        navigate(`/movie/${imdbID}/new_booking/${showID}/${response.data.id}/${price*ticketCount}`)
+      }
+      catch(error){
+        console.error(error)
+      }
+      
+    }
 
     return (
         <div className="rounded-2xl overflow-hidden shadow-xl bg-white">
@@ -45,7 +73,9 @@ export default function OrderBox({ticketCount, price}) {
 
           </div>
 
-          <button className="w-full bg-red-700 hover:bg-red-800 text-white rounded-xl py-4 font-semibold">
+          <button 
+            onClick={postBooking}
+            className="w-full bg-red-700 hover:bg-red-800 text-white rounded-xl py-4 font-semibold">
             Proceed to Payment
           </button>
 

@@ -3,17 +3,20 @@ import {
     Bell
   } from "lucide-react";
 import {NavLink} from "react-router"
-
+import profile from '../../assets/profile.png'
 
   export default function Navbar() {
     return (
-      <nav className="flex items-center justify-between">
+      <nav className="flex items-center justify-between p-6">
   
         <div className="flex items-center gap-10">
-  
-          <h1 className="text-4xl font-bold text-red-700">
-            CineReserve
-          </h1>
+          <NavLink
+            to='/home'>
+            <h1 className="text-4xl font-bold text-red-700">
+              CineReserve
+            </h1>
+          </NavLink>
+          
   
           <ul className="flex gap-8 font-medium">
             <li>
@@ -55,11 +58,14 @@ import {NavLink} from "react-router"
           </div>
   
           <Bell size={20} />
-  
-          <img
-            src="https://www.clipartmax.com/png/middle/214-2143742_individuals-whatsapp-profile-picture-icon.png"
-            className="w-10 h-10 rounded-full"
-          />
+          <NavLink
+            to='/profile'>
+            <img
+              src={profile}
+              className="w-10 h-10 rounded-full"
+            />
+          </NavLink>
+          
         </div>
   
       </nav>

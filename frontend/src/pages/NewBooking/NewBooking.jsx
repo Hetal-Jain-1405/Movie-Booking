@@ -10,7 +10,7 @@ import OrderBox from "../../components/OrderBox/OrderBox";
 import axios from "axios";
 import MovieName from "../../components/MovieName/MovieName";
   
-  export default function Booking() {
+  export default function NewBooking() {
     const {imdbID, showID} = useParams()
 
     const [showDetails, setShowDetails] = useState([])
@@ -29,7 +29,7 @@ import MovieName from "../../components/MovieName/MovieName";
             setShowDetails(response.data)
         }
         fetchShowDetails()
-    })
+    },[])
 
     return (
       <div className="min-h-screen bg-slate-100 p-8">
@@ -127,7 +127,9 @@ import MovieName from "../../components/MovieName/MovieName";
   
             <OrderBox 
                 ticketCount = {ticketCount}
-                price = {showDetails.price}/>
+                price = {showDetails.price}
+                showID = {showID}
+                imdbID = {imdbID}/>
   
           </div>
   
