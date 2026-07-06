@@ -6,6 +6,13 @@ import {NavLink} from "react-router"
 import profile from '../../assets/profile.png'
 
   export default function Navbar() {
+
+    const logout = async() => {
+      localStorage.clear();
+      
+    }
+
+
     return (
       <nav className="flex items-center justify-between p-6">
   
@@ -56,8 +63,15 @@ import profile from '../../assets/profile.png'
             />
   
           </div>
-  
-          <Bell size={20} />
+
+          <NavLink
+            to='/'>
+            <button class='bg-red-600 p-2 m-3 px-4 rounded-full text-white'
+              onClick={logout}>
+                LogOut
+            </button>
+          </NavLink>
+          
           <NavLink
             to='/profile'>
             <img
