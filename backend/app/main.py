@@ -9,7 +9,10 @@ from .database import engine
 
 app = FastAPI()
 
-origins = ['*']
+origins = [
+        "http://localhost:5173",
+        'https://movie-booking-pi-three.vercel.app'
+]
 
 app.add_middleware(
     CORSMiddleware,
