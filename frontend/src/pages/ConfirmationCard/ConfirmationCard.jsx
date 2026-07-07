@@ -9,6 +9,8 @@ import {
 import { useParams, useNavigate } from "react-router";
   
   export default function BookingSuccess() {
+
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
   
     const {imdbID, showID, booking_id, total} = useParams()
     const [movie, setMovie] = useState([])
@@ -19,7 +21,7 @@ import { useParams, useNavigate } from "react-router";
     useEffect(() => {
         const token = localStorage.getItem('access_token')
         const fetchMovie = async() => {
-            const response = await axios.get(`http://127.0.0.1:8000/movies/id/${imdbID}`,{
+            const response = await axios.get(`${backendUrl}/movies/id/${imdbID}`,{
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -28,7 +30,7 @@ import { useParams, useNavigate } from "react-router";
             console.log(response.data)
         }
         const fetchShow = async() => {
-            const response = await axios.get(`http://127.0.0.1:8000/shows/details/${showID}`,{
+            const response = await axios.get(`${backendUrl}/shows/details/${showID}`,{
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -38,7 +40,7 @@ import { useParams, useNavigate } from "react-router";
         }
 
         const fetchBooking = async() => {
-            const response = await axios.get(`http://127.0.0.1:8000/booking/${booking_id}`,{
+            const response = await axios.get(`${backendUrl}/booking/${booking_id}`,{
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

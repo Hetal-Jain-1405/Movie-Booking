@@ -9,6 +9,8 @@ import { useRef } from "react";
   
   export default function MovieDetails() {
     
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+
     const {id}  = useParams(); 
     const [movie, setMovie] = useState([]);
     const showTimesRef = useRef(null);
@@ -16,7 +18,7 @@ import { useRef } from "react";
 
         const fetchMovieDetails = async() => {
             const token = localStorage.getItem('access_token');
-            const response = await axios.get(`http://127.0.0.1:8000/movies/id/${id}`,{
+            const response = await axios.get(`${backendUrl}/movies/id/${id}`,{
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

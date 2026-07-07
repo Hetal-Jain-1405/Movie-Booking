@@ -12,12 +12,14 @@ import { useNavigate } from "react-router";
 
     const navigate = useNavigate()
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+
     const { imdbID, showID, booking_id, total} = useParams();
 
     const postPayment = async() => {
         try{
             const token = localStorage.getItem('access_token')
-            const response = await axios.post(`http://127.0.0.1:8000/payment/${booking_id}`, 
+            const response = await axios.post(`${backendUrl}/payment/${booking_id}`, 
                 {
                     payment_mode: 'card',
                     amount: total,

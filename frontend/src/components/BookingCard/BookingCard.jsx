@@ -2,6 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function BookingCard({ booking }) {
+
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+
     const badge = {
       true: "bg-green-100 text-green-700",
       false: "bg-red-100 text-red-600",
@@ -24,7 +27,7 @@ export default function BookingCard({ booking }) {
     useEffect(() => {
         const token = localStorage.getItem('access_token')
         const fetchMovie = async() => {
-            const response = await axios.get(`http://127.0.0.1:8000/movies/id/${booking.show.imdb_id}`, {
+            const response = await axios.get(`${backendUrl}/movies/id/${booking.show.imdb_id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

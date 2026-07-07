@@ -11,6 +11,7 @@ const SignUp = () => {
   const [name, setName] = useState('');
   const navigate = useNavigate(); // navigate function to redirect after successful login
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
 
   console.log(8+2)
   const handleLogin = async (e) => {
@@ -18,7 +19,7 @@ const SignUp = () => {
     e.preventDefault(); //won't refresh the react page after form submission
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/users/new/', {
+      const response = await axios.post(`${backendUrl}/users/new/`, {
         name: name,
         email: email,
         password: password

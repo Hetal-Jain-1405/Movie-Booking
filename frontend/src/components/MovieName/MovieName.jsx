@@ -4,12 +4,14 @@ import { useState, useEffect } from "react"
 
 export default function MovieName({imdbID}) {
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+
     const [movie, setMovie] = useState([])
 
     useEffect(() => {
         const fetchMovieDetails = async() => {
             const token = localStorage.getItem('access_token')
-            const response = await axios.get(`http://127.0.0.1:8000/movies/id/${imdbID}`,{
+            const response = await axios.get(`${backendUrl}/movies/id/${imdbID}`,{
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

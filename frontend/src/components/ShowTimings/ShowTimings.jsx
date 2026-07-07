@@ -5,13 +5,15 @@ import { useNavigate } from "react-router";
 
 export default function ShowTimings({imdbId}) {
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+
     const [showTimes, setShowTimes] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchShowTimes = async() => {
             const token = localStorage.getItem('access_token');
-            const response = await axios.get(`http://127.0.0.1:8000/shows/${imdbId}`, {
+            const response = await axios.get(`${backendUrl}/shows/${imdbId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

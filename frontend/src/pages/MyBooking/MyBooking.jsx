@@ -6,10 +6,13 @@ import axios from 'axios';
 export default function MyBookings() {
 
   const [all_bookings, setAllBookings] = useState([])
+
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
+
   useEffect(() => {
     const fetchBookings = async() => {
         const token = localStorage.getItem('access_token')
-        const response = await axios.get(`http://127.0.0.1:8000/booking/all`, {
+        const response = await axios.get(`${backendUrl}/booking/all`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

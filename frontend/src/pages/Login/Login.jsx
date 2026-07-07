@@ -6,6 +6,9 @@ import { useNavigate } from "react-router";
 
 
 const Login = () => {
+
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -19,7 +22,7 @@ const Login = () => {
     formData.append('password', password);
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/users/login/', formData)
+      const response = await axios.post(`${backendUrl}/users/login/`, formData)
       console.log('Login successful:', response.data);
 
       localStorage.setItem('access_token', response.data.access_token);

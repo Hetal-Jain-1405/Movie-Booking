@@ -16,12 +16,13 @@ import MovieName from "../../components/MovieName/MovieName";
     const [showDetails, setShowDetails] = useState([])
     const [ticketCount, setticketCount] = useState(1)
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 
     useEffect(() => {
         const fetchShowDetails = async() => {
             const token = localStorage.getItem('access_token')
-            const response = await axios.get(`http://127.0.0.1:8000/shows/details/${showID}`, {
+            const response = await axios.get(`${backendUrl}/shows/details/${showID}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }

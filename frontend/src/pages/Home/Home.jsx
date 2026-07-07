@@ -8,13 +8,15 @@ import axios from "axios";
 
 export default function Home() {
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
         const fetchMovies = async () => {
            const token = localStorage.getItem('access_token');
 
-            const response = await axios.get('http://127.0.0.1:8000/movies/all', {
+            const response = await axios.get(`${backendUrl}/movies/all`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

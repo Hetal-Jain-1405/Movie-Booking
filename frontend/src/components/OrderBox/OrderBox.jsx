@@ -5,12 +5,14 @@ import { useNavigate } from "react-router";
 
 export default function OrderBox({ticketCount, price, showID,imdbID}) {
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
+
   const navigate = useNavigate()
 
     const postBooking = async() => {
       try{
         const token = localStorage.getItem('access_token')
-        const response = await axios.post(`http://127.0.0.1:8000/booking/new`, {
+        const response = await axios.post(`${backendUrl}/booking/new`, {
 
             show_id: showID,
             count_of_tickets: ticketCount

@@ -8,11 +8,13 @@ export default function Profile() {
 
     const [profile, setProfile] = useState([])
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+
     useEffect(()=> {
         const token = localStorage.getItem('access_token')
         
         const fetchProfile = async() => {
-            const response = await axios.get(`http://127.0.0.1:8000/users/profile`,{
+            const response = await axios.get(`${backendUrl}/users/profile`,{
                 headers:{
                     Authorization: `Bearer ${token}`
                 }
