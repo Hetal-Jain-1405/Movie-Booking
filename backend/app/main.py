@@ -11,7 +11,8 @@ app = FastAPI()
 
 origins = [
         "http://localhost:5173",
-        'https://movie-booking-pi-three.vercel.app'
+        'https://movie-booking-pi-three.vercel.app',
+        
 ]
 
 app.add_middleware(
