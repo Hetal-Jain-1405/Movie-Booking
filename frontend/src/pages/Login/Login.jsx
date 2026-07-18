@@ -22,7 +22,7 @@ const Login = () => {
     formData.append('password', password);
 
     try {
-      const response = await axios.post(`${backendUrl}/users/login/`, formData)
+      const response = await axios.post(`${backendUrl}/users/login`, formData)
       console.log('Login successful:', response.data);
 
       localStorage.setItem('access_token', response.data.access_token);

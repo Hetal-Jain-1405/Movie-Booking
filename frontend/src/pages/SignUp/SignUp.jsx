@@ -19,7 +19,7 @@ const SignUp = () => {
     e.preventDefault(); //won't refresh the react page after form submission
 
     try {
-      const response = await axios.post(`${backendUrl}/users/new/`, {
+      const response = await axios.post(`${backendUrl}/users/new`, {
         name: name,
         email: email,
         password: password
